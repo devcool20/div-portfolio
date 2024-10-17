@@ -51,7 +51,7 @@ const FollowingCursor = () => {
   }, [])
 
   return (
-    <div className='hidden lg:block'>
+    <div className='hidden lg:visible'>
       <div
         ref={cursorRef}
         style={{
