@@ -1,31 +1,51 @@
-import { useEffect, useState } from "react"
-import { useTrail, animated, easings } from "@react-spring/web"
-import { GRIDS } from "../constants"
+import { useEffect, useState } from "react";
+import { useTrail, animated, easings } from "@react-spring/web";
+import { GRIDS } from "../constants";
 
 export default function ProjectsGrid({ setCurrentGrid, animatedStyles }) {
-  const [nameIdx, setNameIdx] = useState(0)
-  const name = "Projects".split("")
+  const [nameIdx, setNameIdx] = useState(0);
+  const name = "Projects".split("");
 
-  const [subheadingIdx, setSubheadingIdx] = useState(0)
+  const [subheadingIdx, setSubheadingIdx] = useState(0);
   const subheading =
-    "Here are a few personal projects I've worked on over the years".split("")
+    "Here are a few personal projects I've worked on over the years".split("");
+
+  const projects = [
+    {
+      title: "Stock Screener App",
+      description: "A stock screener built with React Native and Alpaca API.",
+      github: "https://github.com/username/stock-screener-app",
+    },
+    {
+      title: "Sentiment Analysis Tool",
+      description: "A tool to analyze market sentiment for stock trading.",
+      github: "https://github.com/username/sentiment-analysis-tool",
+    },
+    {
+      title: "Shopping App",
+      description: "A full-featured e-commerce app with a cart and checkout.",
+      github: "https://github.com/username/shopping-app",
+    },
+  ];
+
+  const [openProject, setOpenProject] = useState(null); 
 
   useEffect(() => {
     const id = setInterval(() => {
       if (nameIdx < name.length) {
-        setNameIdx(nameIdx + 1)
+        setNameIdx(nameIdx + 1);
       }
       if (subheadingIdx < subheading.length) {
-        setSubheadingIdx(subheadingIdx + 1)
+        setSubheadingIdx(subheadingIdx + 1);
       }
-    }, 100)
+    }, 100);
 
     return () => {
-      clearInterval(id)
-    }
-  })
+      clearInterval(id);
+    };
+  });
 
-  const trails = useTrail(7, {
+  const trails = useTrail(projects.length, {
     from: { scale: 0 },
     to: { scale: 1 },
     leave: { scale: 1 },
@@ -33,93 +53,62 @@ export default function ProjectsGrid({ setCurrentGrid, animatedStyles }) {
       easing: easings.easeInBack,
       delay: 300,
     },
-  })
+  });
+
+  const handleProjectClick = (idx) => {
+    if (openProject === idx) {
+      setOpenProject(null);
+    } else {
+      setOpenProject(idx);
+    }
+  };
 
   return (
-    <animated.div className='grid grid-cols-1 lg:grid-cols-9 lg:grid-rows-9 w-screen lg:h-screen p-5 gap-5 bg-stone-200'>
-      <animated.div
-        style={animatedStyles}
-        className='row-start-4 lg:row-span-3 lg:col-span-5'
-      >
+    <animated.div className="grid grid-cols-1 lg:grid-cols-9 lg:grid-rows-9 w-screen lg:h-screen p-5 gap-5 bg-stone-200">
+      {projects.map((project, idx) => (
         <animated.div
-          style={trails[1]}
-          className='w-full h-full bg-[#A7C957] border border-black'
-        ></animated.div>
-      </animated.div>
-
-      <animated.div
-        style={animatedStyles}
-        className='lg:row-span-3 lg:col-span-4'
-      >
-        <animated.div
-          style={trails[3]}
-          className='w-full h-full relative bg-[#BC4749] border border-black'
-        ></animated.div>
-      </animated.div>
-
-      <animated.div
-        style={animatedStyles}
-        className='lg:col-span-3 lg:row-span-6'
-      >
-        <animated.div
-          style={trails[2]}
-          className='w-full h-full relative bg-[#6A994E] border border-neutral-900'
-        ></animated.div>
-      </animated.div>
-
-      <animated.div
-        style={animatedStyles}
-        onClick={() => setCurrentGrid(GRIDS[0])}
-        className='row-start-1 lg:col-span-3 lg:row-span-3'
-      >
-        <animated.div
-          style={trails[0]}
-          className='w-full h-full p-10 bg-[#386641] border border-black flex flex-col items-center justify-center gap-3'
+          key={idx}
+          style={animatedStyles}
+          onClick={() => handleProjectClick(idx)} 
+          className={`cursor-pointer transition-all duration-500 ease-in-out ${
+            openProject === idx
+              ? "lg:col-span-9 lg:row-span-9"
+              : "lg:col-span-3 lg:row-span-3"
+          }`}
         >
-          <div className='border border-neutral-900 bg-[#F2E8CF] w-fit px-5 py-3'>
-            <span className='text-5xl font-bold text-[#BC4749]'>
-              {name.slice(0, nameIdx).join("")}
-              <span className='inline-block mx-2 w-6 h-1 bg-[#2A9D8F] animate-pulse'></span>
-            </span>
-          </div>
-          <div className='border text-center border-neutral-900 bg-[#F2E8CF] w-fit px-5 py-2'>
-            <span className='lg:text-md text-[#BC4749]'>
-              {subheading.slice(0, subheadingIdx).join("")}
-              <span className='inline-block w-3 h-0.5 mx-1 bg-[#2A9D8F] animate-pulse'></span>
-            </span>
-          </div>
+          <animated.div
+            style={trails[idx]}
+            className={`w-full h-full p-10 ${
+              idx % 2 === 0 ? "bg-[#386641]" : "bg-[#BC4749]"
+            } border border-black flex flex-col items-center justify-center gap-3`}
+          >
+            <div className="border border-neutral-900 bg-[#F2E8CF] w-fit px-5 py-3">
+              <h3 className="text-2xl font-bold text-[#BC4749]">
+                {project.title}
+              </h3>
+            </div>
+            {openProject === idx && (
+              <div className="border text-center border-neutral-900 bg-[#F2E8CF] w-fit px-5 py-2">
+                <p className="lg:text-md text-[#BC4749]">{project.description}</p>
+                <a
+                  href={project.github}
+                  className="text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Repo
+                </a>
+                <button
+                  onClick={() => setCurrentGrid(GRIDS[0])} // Back to HomeGrid
+                  className="mt-5 text-white bg-blue-500 px-3 py-2 rounded-lg"
+                >
+                  Back to Home
+                </button>
+              </div>
+            )}
+          </animated.div>
         </animated.div>
-      </animated.div>
-
-      <animated.div
-        style={animatedStyles}
-        className='lg:row-span-3 lg:col-span-3'
-      >
-        <animated.div
-          style={trails[4]}
-          className='w-full h-full relative bg-[#6A994E] border border-neutral-900'
-        ></animated.div>
-      </animated.div>
-
-      <animated.div
-        style={animatedStyles}
-        className='lg:row-span-3 lg:col-span-4'
-      >
-        <animated.div
-          style={trails[5]}
-          className='w-full h-full relative bg-[#BC4749] border border-neutral-900'
-        ></animated.div>
-      </animated.div>
-
-      <animated.div
-        style={animatedStyles}
-        className='lg:row-span-3 lg:col-span-2'
-      >
-        <animated.div
-          style={trails[4]}
-          className='w-full h-full lg:flex justify-between items-center p-10 gap-5 bg-[#A7C957] border border-black'
-        ></animated.div>
-      </animated.div>
+      ))}
     </animated.div>
-  )
+  );
 }

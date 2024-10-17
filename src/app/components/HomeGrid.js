@@ -12,10 +12,12 @@ import { GRIDS } from "../constants"
 
 export default function HomeGrid({ setCurrentGrid, animatedStyles }) {
   const [nameIdx, setNameIdx] = useState(0)
-  const name = "Urvashi".split("")
+  const name = "Hey there, I'm Divyanshu Sharma".split("")
+
+  
 
   const [subheadingIdx, setSubheadingIdx] = useState(0)
-  const subheading = "Creative Web Developer, Content Creator".split("")
+  const subheading = "Mobile and Web Application Developer".split("")
 
   useEffect(() => {
     const id = setInterval(() => {
