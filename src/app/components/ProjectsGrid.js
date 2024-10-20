@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTrail, animated, easings } from "@react-spring/web";
 import { GRIDS } from "../constants";
-
+//dasjdashj
 export default function ProjectsGrid({ setCurrentGrid, animatedStyles }) {
   const [nameIdx, setNameIdx] = useState(0);
   const name = "Projects".split("");
