@@ -70,16 +70,18 @@ export default function HomeGrid({ setCurrentGrid, animatedStyles }) {
         </animated.div>
       </animated.div>
       <animated.div
-        style={animatedStyles}
-        className='md:col-span-3 md:row-span-3'
-      >
-        <animated.div
-          style={trails[2]}
-          className='relative h-full w-full border border-neutral-900 bg-[#9ad1ea]'
-        >
-          <Education />
-        </animated.div>
-      </animated.div>
+  style={animatedStyles}
+  className='md:col-span-3 md:row-span-3'
+>
+  <animated.div
+    onClick={() => setCurrentGrid(GRIDS[2])} // Navigate to EducationGrid
+    style={trails[2]}
+    className='relative h-full w-full border border-neutral-900 bg-[#9ad1ea]'
+  >
+    <Education />
+  </animated.div>
+</animated.div>
+
       <animated.div
         style={animatedStyles}
         className='row-start-1 md:col-span-4 md:row-span-3'
