@@ -11,14 +11,14 @@ export default function EducationGrid({ setCurrentGrid, animatedStyles }) {
 
   const education = [
     {
-      title: "Bachelor of Technology in Computer Science",
-      institution: "ABC University",
-      year: "2017 - 2021",
+      title: "Bachelor of Technology in Information Technology",
+      institution: "AKGEC, Ghaziabad",
+      year: "2021 - 2025",
     },
     {
-      title: "High School Diploma",
-      institution: "XYZ High School",
-      year: "2015 - 2017",
+      title: "10+2 Intermediate in PCM",
+      institution: "Shriji Baba Saraswati Vidya Mandir, Mathura",
+      year: "2017 - 2021",
     },
   ];
 
