@@ -48,16 +48,17 @@ export default function HomeGrid({ setCurrentGrid, animatedStyles }) {
     <animated.div className='grid grid-cols-1 md:grid-cols-9 md:grid-rows-9 w-screen md:h-screen p-5 gap-5 bg-stone-200'>
   {/* Work Experience */}
   <animated.div
-    style={animatedStyles}
-    className='row-start-5 md:row-span-6 md:col-span-3'
+  style={animatedStyles}
+  className='row-start-5 md:row-span-6 md:col-span-3'
+>
+  <animated.div
+    onClick={() => setCurrentGrid(GRIDS[4])} // Ensure you are calling setCurrentGrid correctly
+    style={trails[4]}
+    className='relative bg-[#F4A261] border border-black h-full w-full'
   >
-    <animated.div
-      style={trails[1]}
-      className='relative bg-[#F4A261] border border-black h-full w-full'
-    >
-      <WorkExperience />
-    </animated.div>
+    <WorkExperience setCurrentGrid={setCurrentGrid} /> {/* Pass setCurrentGrid here */}
   </animated.div>
+</animated.div>
 
   {/* Projects */}
   <animated.div

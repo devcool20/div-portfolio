@@ -168,13 +168,23 @@ export default function Contact() {
         </svg>
       </div>
       <div className='grid grid-cols-3 gap-3 md:w-1/2'>
-        <BlackIconWrapper icon={faInstagram} />
-        <RedIconWrapper icon={faXTwitter} />
-        <BlackIconWrapper icon={faYoutube} />
-        <RedIconWrapper icon={faLinkedinIn} />
-        <BlackIconWrapper icon={faLinkedinIn} />
-        <RedIconWrapper icon={faEnvelope} />
-      </div>
+  <a href="https://www.instagram.com/divyanshu.shh/" target="_blank" rel="noopener noreferrer">
+    <BlackIconWrapper icon={faInstagram} />
+  </a>
+  <a href="https://x.com/divyanshush" target="_blank" rel="noopener noreferrer">
+    <RedIconWrapper icon={faXTwitter} />
+  </a>
+  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+    <BlackIconWrapper icon={faYoutube} />
+  </a>
+  <a href="https://www.linkedin.com/in/divyanshu-sharma-b9b534113/" target="_blank" rel="noopener noreferrer">
+    <RedIconWrapper icon={faLinkedinIn} />
+  </a>
+  <a href="sharmadivyanshu265@gmail.com">
+    <BlackIconWrapper icon={faEnvelope} />
+  </a>
+</div>
+
     </>
   )
 }
