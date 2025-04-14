@@ -171,7 +171,7 @@ export default function Contact() {
   <a href="https://www.instagram.com/divyanshu.shh/" target="_blank" rel="noopener noreferrer">
     <BlackIconWrapper icon={faInstagram} />
   </a>
-  <a href="https://x.com/divyanshush" target="_blank" rel="noopener noreferrer">
+  <a href="https://x.com/divyanshush                             " target="_blank" rel="noopener noreferrer">
     <RedIconWrapper icon={faXTwitter} />
   </a>
   <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">

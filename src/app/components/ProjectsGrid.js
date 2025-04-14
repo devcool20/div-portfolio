@@ -12,19 +12,22 @@ export default function ProjectsGrid({ setCurrentGrid, animatedStyles }) {
 
   const projects = [
     {
-      title: "Stock Screener App",
-      description: "A stock screener built with React Native and Alpaca API.",
-      github: "https://github.com/username/stock-screener-app",
+      title: "Formula 1 Experience App",
+      description: "F1 fan app (React Native + Supabase) with community forums, merchandise store, and live screening ticket bookings.",
+      tech: " Typescript, ReactNative, Supabase, Expo",
+      github: "https://github.com/devcool20/projectf1",
     },
     {
-      title: "Sentiment Analysis Tool",
-      description: "A tool to analyze market sentiment for stock trading.",
-      github: "https://github.com/username/sentiment-analysis-tool",
+      title: "Stocker",
+      description: "Engineered an innovative stock aggregation app leveraging TypeScript and React Native, enabling users to track top-performing U.S. financial market stocks and make informed investment decisions through real-time data analysis. Integrated live news feeds and implemented advanced machine learning models to perform sentiment analysis on market news, providing users with actionable insights on market trends and stock performance.",
+      tech: "Typescript, React Native, Tensorflow, Machine Learning",
+      github: "https://github.com/devcool20/stocker",
     },
     {
-      title: "Shopping App",
-      description: "A full-featured e-commerce app with a cart and checkout.",
-      github: "https://github.com/username/shopping-app",
+      title: "Web3 Website Uptime Monitor",
+      description: "Developed a decentralized website uptime monitoring tool using Next.js and Solidity, enabling users to track the availability of their websites in real-time. Leveraged blockchain technology to ensure transparency and reliability in monitoring services, providing users with a secure and efficient solution for website uptime management.",
+      tech  : "Next.js, Solidity, Web3",
+      github: "https://github.com/devcool20/dpin-uptime",
     },
   ];
 
@@ -90,6 +93,7 @@ export default function ProjectsGrid({ setCurrentGrid, animatedStyles }) {
             {openProject === idx && (
               <div className="border text-center border-neutral-900 bg-[#F2E8CF] w-fit px-5 py-2">
                 <p className="lg:text-md text-[#BC4749]">{project.description}</p>
+                <p className="lg:text-md text-[#BC4749]">{project.tech}</p>
                 <a
                   href={project.github}
                   className="text-blue-500"
